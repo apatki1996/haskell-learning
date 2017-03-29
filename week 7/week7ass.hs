@@ -17,16 +17,9 @@ import Data.List
 	largestPower 10 2 = 8
 -}
 
-factorial n 
-	| n < 0 = -1
-	| n == 0 = 1
-	| otherwise = n * factorial (n-1)
-	
-largestpower n p po  k 
-	| ((factorial n) `mod` p) /= 0 = k-1
-	| otherwise = largestpower n (po^(k+1)) po (k+1)
-	
-largestPower n p = largestpower n p p 1
+largestPower :: Int -> Int -> Int
+largestPower 0 p = 0
+largestPower n p = (quot n p) + (largestPower (quot n p) p)
 
 
 {-
